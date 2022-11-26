@@ -20,11 +20,14 @@ int main()
 		if (file == NULL) 
 			printf("fopen error\n");
 		else {
-			bytes = fwrite(filenames[i], strlen(filenames[i]), 1, file);
+			printf("Here\n");
+			//bytes = fwrite(filenames[i], strlen(filenames[i]), 1, file);
 			fclose(file);
 		}
 
 	}
+
+	file = fopen(filenames[0], "r");
 
 
 	/* add your code here */
