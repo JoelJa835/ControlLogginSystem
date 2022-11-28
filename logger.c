@@ -11,12 +11,6 @@
 #include <errno.h>
 #include <linux/limits.h>
 
-#ifndef LOGFILE
-#define LOGFILE "//home/jogopogo/Projects/Archive/src_corpus/file_logging.log"   
-#endif
-
-
-
 
 char * getTimeAndDate(){
 
@@ -76,18 +70,18 @@ char * calculate_file_md5(FILE *original_fopen_ret) {
 }
 
 char * recover_filename(FILE * f) {
-  int fd;
-  char fd_path[0xFFF];
-  char * filename = malloc(0xFFF);
-  ssize_t n;
+  	int fd;
+  	char fd_path[0xFFF];
+  	char * filename = malloc(0xFFF);
+  	ssize_t n;
 
-  fd = fileno(f);
-  sprintf(fd_path, "/proc/self/fd/%d", fd);
-  n = readlink(fd_path, filename, 0xFFF);
-  if (n < 0)
-      return NULL;
-  filename[n] = '\0';
-  return filename;
+  	fd = fileno(f);
+  	sprintf(fd_path, "/proc/self/fd/%d", fd);
+  	n = readlink(fd_path, filename, 0xFFF);
+  	if (n < 0)
+      	return NULL;
+  	filename[n] = '\0';
+  	return filename;
 }
 
 
